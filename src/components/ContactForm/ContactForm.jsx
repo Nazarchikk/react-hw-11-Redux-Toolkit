@@ -10,7 +10,7 @@ export default function ContactForm() {
     const handleSubmit = (e) => {
       e.preventDefault();
       const existingName = contacts.some(
-        contact => contact.name.name === e.target.elements.name.value
+        contact => contact.name === e.target.elements.name.value
       );
     //   const existingPhone = contacts.some(
     //     contact => contact.name.phone === e.target.elements.phone.value

@@ -9,7 +9,7 @@ const contactsSlice = createSlice({
     error: null,
   }, reducers: {
     filterContacts(state, action) {
-      const filtersByName = state.contacts.filter(contact => contact.name.name.toLowerCase().includes(action.payload))
+      const filtersByName = state.contacts.filter(contact => contact.name.toLowerCase().includes(action.payload.toLowerCase()))
       if (action.payload.length > 0) {
         state.filterdContacts = filtersByName;
       } else {
@@ -59,49 +59,6 @@ const contactsSlice = createSlice({
     },
   },
 });
-
-  // reducers: {
-  //   addContacts: {
-  //     reducer(state, action) {
-  //       const existingName = state.filterdContacts.some(
-  //         contact => contact.name === action.payload.name
-  //       );
-  //       const existingNumber = state.filterdContacts.some(
-  //         contact => contact.number === action.payload.number
-  //       );
-  //       if (existingName || existingNumber) {
-  //         Notify.failure('Contact already exists');
-  //       } else {
-  //         state.contacts.unshift(action.payload);
-  //         state.filterdContacts.unshift(action.payload);
-  //       }
-
-  //     },
-  //     prepare(name,number) {
-  //       return {
-  //         payload: {
-  //           name,
-  //           number,
-  //           id: nanoid(),
-  //         },
-  //       };
-  //     },
-  //   },
-  //   deleteContacts(state, action) {
-  //     const index = state.contacts.findIndex(contact => contact.id === action.payload);
-  //     const index1 = state.filterdContacts.findIndex(contact => contact.id === action.payload);
-  //     state.contacts.splice(index, 1);
-  //     state.filterdContacts.splice(index1, 1);
-  //   },
-  //   filterContacts(state, action) {
-  //     const filtersByName = state.filterdContacts.filter(contact => contact.name.toLowerCase().includes(action.payload))
-  //     if (action.payload.length > 0) {
-  //       state.filterdContacts = filtersByName;
-  //     } else {
-  //       state.filterdContacts = [...state.contacts];
-  //     }
-  //   },
-  // },
 
 export const { filterContacts } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
